@@ -62,6 +62,67 @@ export class ChannelProvider extends BaseProvider {
         );
         return response.ok;
     }
+
+    async createAnnouncement(
+        channelId: string,
+        data: ICreateAnnouncementJSONParameters,
+    ) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/channels/${channelId}/announcements`,
+            {
+                method: "POST",
+                body: JSON.stringify(data),
+            },
+        );
+
+        return response.json();
+    }
+
+    async getAnnouncements(channelId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/channels/${channelId}/announcements`,
+        );
+
+        return response.json();
+    }
+
+    async getAnnouncement(channelId: string, announcementId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/channels/${channelId}/announcements/${announcementId}`,
+        );
+
+        return response.json();
+    }
+
+    async updateAnnouncement(
+        channelId: string,
+        announcementId: string,
+        data: IUpdateAnnouncementJSONParameters,
+    ) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/channels/${channelId}/announcements/${announcementId}`,
+            {
+                method: "PATCH",
+                body: JSON.stringify(data),
+            },
+        );
+
+        return response.json();
+    }
+
+    async deleteAnnouncement(
+        channelId: string,
+        announcementId: string,
+    ) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/channels/${channelId}/announcements/${announcementId}`,
+            {
+                method: "DELETE",
+            },
+        );
+
+        return response.ok;
+    }
 }
 
 export interface ICreateChannelJSONParameters {
@@ -81,4 +142,14 @@ export interface IUpdateChannelJSONParameters {
     topic?: string;
     visibility?: string;
     priority?: number;
+}
+
+export interface ICreateAnnouncementJSONParameters {
+    title: string;
+    content: string;
+}
+
+export interface IUpdateAnnouncementJSONParameters {
+    title?: string;
+    content?: string;
 }
