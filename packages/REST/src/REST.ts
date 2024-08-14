@@ -1,14 +1,17 @@
 import { RateLimitError } from "./Errors/RateLimitError.ts";
 import { RequestError } from "./Errors/RequestError.ts";
+import { GroupProvider } from "./Providers/Group.ts";
 import { ServerProvider } from "./Providers/Server.ts";
 
 export class REST {
     public readonly token: string;
     public readonly server: ServerProvider;
+    public readonly group: GroupProvider;
 
     public constructor(token: string) {
         this.token = token;
         this.server = new ServerProvider(this);
+        this.group = new GroupProvider(this);
     }
 
     public createRequest(input: RequestInfo | URL, init?: RequestInit) {
@@ -17,14 +20,16 @@ export class REST {
         init.headers ??= {};
         (init.headers as Record<string, string>)["Authorization"] =
             `Bearer ${this.token}`;
-
+        (init.headers as Record<string, string>)["Content-Type"] =
+            "application/json";
+        (init.headers as Record<string, string>)["Accept"] = "application/json";
         return new Request(input, init);
     }
 
     public async makeRequest(
         input: RequestInfo | URL,
         init?: RequestInit,
-    ): Promise<unknown> {
+    ): Promise<Response> {
         const request = this.createRequest(input, init);
         const response = await fetch(request);
 
@@ -38,7 +43,7 @@ export class REST {
             }
         }
 
-        if (response.ok) return response.json();
+        if (response.ok) return response;
         else throw new RequestError(response.statusText);
     }
 }
