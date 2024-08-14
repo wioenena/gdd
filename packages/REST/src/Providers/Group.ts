@@ -51,6 +51,28 @@ export class GroupProvider extends BaseProvider {
         );
         return response.ok;
     }
+
+    async addMember(groupId: string, userId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/groups/${groupId}/members/${userId}`,
+            {
+                method: "PUT",
+            },
+        );
+
+        return response.ok;
+    }
+
+    async removeMember(groupId: string, userId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/groups/${groupId}/members/${userId}`,
+            {
+                method: "DELETE",
+            },
+        );
+
+        return response.ok;
+    }
 }
 
 export interface ICreateGroupJSONParameters {
