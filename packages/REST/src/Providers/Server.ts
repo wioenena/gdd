@@ -8,4 +8,12 @@ export class ServerProvider extends BaseProvider {
         );
         return response.json();
     }
+
+    async bans(serverId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/servers/${serverId}/bans`,
+        );
+
+        return response.json();
+    }
 }
