@@ -1,0 +1,10 @@
+{
+  "name": "@wioenena/gdd-rest",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "tasks": {
+  },
+  "imports": {
+    "@std/dotenv": "jsr:@std/dotenv"
+  }
+}
