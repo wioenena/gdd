@@ -51,4 +51,34 @@ export class MemberProvider extends BaseProvider {
 
         return response.json();
     }
+
+    async banMember(serverId: string, userId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/servers/${serverId}/bans/${userId}`,
+            {
+                method: "POST",
+            },
+        );
+
+        return response.ok;
+    }
+
+    async getMemberBan(serverId: string, userId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/servers/${serverId}/bans/${userId}`,
+        );
+
+        return response.json();
+    }
+
+    async unBanMember(serverId: string, userId: string) {
+        const response = await this.rest.makeRequest(
+            `${API_URL}/servers/${serverId}/bans/${userId}`,
+            {
+                method: "DELETE",
+            },
+        );
+
+        return response.ok;
+    }
 }
