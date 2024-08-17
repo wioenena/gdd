@@ -53,3 +53,34 @@ export type GetMembersPathParams = {
 export type GetMembersResponse = {
     members: ServerMemberSummaryModel[];
 };
+
+export type AddMemberToGroupPathParams = {
+    groupId: string;
+    userId: string | "@me";
+};
+
+export type RemoveMemberFromGroupPathParams = {
+    groupId: string;
+    userId: string | "@me";
+};
+
+export type AssignRoleToMemberPathParams = {
+    serverId: string;
+    userId: string | "@me";
+    roleId: number;
+};
+
+export type RemoveRoleFromMemberPathParams = {
+    serverId: string;
+    userId: string | "@me";
+    roleId: number;
+};
+
+export type GetMemberRolesPathParams = {
+    serverId: string;
+    userId: string | "@me";
+};
+
+export type GetMemberRolesResponse = {
+    roleIds: number[];
+};
