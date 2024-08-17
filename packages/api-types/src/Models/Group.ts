@@ -23,7 +23,7 @@ export type CreateGroupJSONParams =
     & Pick<GroupModel, "name">
     & Partial<Pick<GroupModel, "description" | "emoteId" | "isPublic">>;
 
-export type CreateGroupResponseType = {
+export type CreateGroupResponse = {
     group: GroupModel;
 };
 
@@ -31,7 +31,7 @@ export type GetGroupsPathParams = {
     serverId: string;
 };
 
-export type GetGroupsResponseType = {
+export type GetGroupsResponse = {
     groups: GroupModel[];
 };
 
@@ -40,7 +40,7 @@ export type GetGroupPathParams = {
     groupId: string;
 };
 
-export type GetGroupResponseType = {
+export type GetGroupResponse = {
     group: GroupModel;
 };
 
@@ -53,7 +53,7 @@ export type UpdateGroupJSONParams = Partial<
     Pick<GroupModel, "name" | "description" | "emoteId" | "isPublic">
 >;
 
-export type UpdateGroupResponseType = { group: GroupModel };
+export type UpdateGroupResponse = { group: GroupModel };
 
 export type DeleteGroupPathParams = {
     serverId: string;

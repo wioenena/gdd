@@ -80,7 +80,7 @@ export type CreateChannelJSONParams =
         >
     >;
 
-export type CreateChannelResponseType = {
+export type CreateChannelResponse = {
     channel: ServerChannelModel;
 };
 
@@ -88,7 +88,7 @@ export type GetChannelPathParams = {
     channelId: string;
 };
 
-export type GetChannelResponseType = {
+export type GetChannelResponse = {
     channel: ServerChannelModel;
 };
 
@@ -100,7 +100,7 @@ export type UpdateChannelJSONParams = Partial<
     Pick<ServerChannelModel, "name" | "topic" | "visibility" | "priority">
 >;
 
-export type UpdateChannelResponseType = {
+export type UpdateChannelResponse = {
     channel: ServerChannelModel;
 };
 

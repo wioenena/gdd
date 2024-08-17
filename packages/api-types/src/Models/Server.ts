@@ -38,7 +38,7 @@ export type GetServerPathParams = {
     serverId: string;
 };
 
-export type GetServerResponseType = {
+export type GetServerResponse = {
     server: ServerModel;
     serverMemberCount: number;
 };
