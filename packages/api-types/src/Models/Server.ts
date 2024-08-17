@@ -33,3 +33,12 @@ export const enum ServerType {
     Streaming = "streaming",
     Other = "other",
 }
+
+export type GetServerPathParams = {
+    serverId: string;
+};
+
+export type GetServerResponseType = {
+    server: ServerModel;
+    serverMemberCount: number;
+};
