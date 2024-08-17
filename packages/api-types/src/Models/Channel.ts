@@ -1,4 +1,4 @@
-export type MentionsObject = {
+export type MentionsModel = {
     users?: UserMention[];
     channels?: ChannelMention[];
     roles?: RoleMention[];
