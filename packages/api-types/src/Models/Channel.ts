@@ -50,6 +50,19 @@ export type ServerChannelModelType =
     | "scheduling"
     | "stream";
 
+export const enum ServerChannelType {
+    Announcements = "announcements",
+    Chat = "chat",
+    Calendar = "calendar",
+    Forums = "forums",
+    Media = "media",
+    Docs = "docs",
+    Voice = "voice",
+    List = "list",
+    Scheduling = "scheduling",
+    Stream = "stream",
+}
+
 export type ServerChannelModelVisibility = "private" | "public";
 
 export type CreateChannelJSONParams =
