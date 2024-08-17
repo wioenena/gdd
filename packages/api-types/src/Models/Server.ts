@@ -9,10 +9,7 @@ export type ServerModel = {
     banner?: string;
     timezone?: string;
     isVerified?: boolean;
-    /**
-     * The default channel id(uuid) for the server
-     */
-    defaultChannelId?: string;
+    defaultChannelId?: string; // The default channel id(uuid) for the server
     createdAt: string;
 };
 
